@@ -1,0 +1,2045 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Qur'an & Qāʿidah Lessons</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            :root {
+                color-scheme: light;
+                --green-50: #f0f7f2;
+                --green-100: #d6ead9;
+                --green-200: #a8ceae;
+                --green-300: #6fab79;
+                --green-600: #2d6e45;
+                --green-800: #1a4229;
+                --gold-100: #f5ead0;
+                --gold-300: #d4a84b;
+                --gold-400: #b8922e;
+                --gold-600: #8a6a1a;
+                --beige-50: #faf8f3;
+                --beige-100: #f2ede0;
+                --beige-200: #e5dcc8;
+                --off-white: #fdfcf9;
+                --text-dark: #1c2b1f;
+                --text-mid: #3d5240;
+                --text-muted: #6b7e6d;
+                --text-light: #9aad9c;
+                --shadow-sm: 0 2px 8px rgba(45, 110, 69, 0.06);
+                --shadow-md: 0 4px 20px rgba(45, 110, 69, 0.1);
+                --shadow-lg: 0 8px 40px rgba(45, 110, 69, 0.13);
+                --radius: 14px;
+                --radius-sm: 8px;
+                --pattern-opacity: 0.15;
+                --surface: #ffffff;
+                --footer-bg: #111111;
+                --footer-text: #cccccc;
+                --footer-muted: #888888;
+                --footer-border: #222222;
+                --nav-bg: rgba(250, 248, 243, 0.92);
+                --brand-deep: var(--green-800);
+                --on-brand: #ffffff;
+                --on-accent: #ffffff;
+
+                --footer-bottom-text: #666666;
+                --blob-1: rgba(45, 110, 69, 0.16);
+                --blob-2: rgba(212, 168, 75, 0.18);
+                --blob-3: rgba(111, 171, 121, 0.12);
+            }
+
+            [data-theme="dark"] {
+                color-scheme: dark;
+                --green-50: #0f1a14;
+                --green-100: #13231a;
+                --green-200: #1e3829;
+                --green-300: #3d7a57;
+                --green-600: #39a06b;
+                --green-800: #bfe6cd;
+                --gold-100: #1c1710;
+                --gold-300: #d4a84b;
+                --gold-400: #e3c06c;
+                --gold-600: #f0d58c;
+                --beige-50: #0d1410;
+                --beige-100: #101a14;
+                --beige-200: #1a2a22;
+                --pattern-opacity: 0.055;
+                --off-white: #0a110d;
+                --text-dark: #e9f2ea;
+                --text-mid: #c6d4c8;
+                --text-muted: #9fb1a3;
+                --text-light: #7f9485;
+                --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.35);
+                --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.42);
+                --shadow-lg: 0 10px 46px rgba(0, 0, 0, 0.48);
+                --surface: #0f1712;
+                --footer-bg: #070a08;
+                --footer-text: #cfd6d1;
+                --footer-muted: #8d9a92;
+                --footer-border: #151c18;
+                --nav-bg: rgba(10, 17, 13, 0.78);
+                --brand-deep: #07110b;
+                --on-brand: rgba(255, 255, 255, 0.96);
+                --on-accent: #ffffff;
+
+                --footer-bottom-text: rgba(207, 214, 209, 0.72);
+                --blob-1: rgba(57, 160, 107, 0.22);
+                --blob-2: rgba(227, 192, 108, 0.18);
+                --blob-3: rgba(191, 230, 205, 0.12);
+            }
+
+            html {
+                scroll-behavior: smooth;
+                font-size: 18px;
+            }
+
+            body {
+                font-family: "Inter", sans-serif;
+                background: var(--off-white);
+                color: var(--text-dark);
+                line-height: 1.75;
+                overflow-x: hidden;
+            }
+
+            body::before,
+            body::after {
+                content: "";
+                position: fixed;
+                inset: auto;
+                width: 560px;
+                height: 560px;
+                border-radius: 999px;
+                filter: blur(55px);
+                opacity: 0.95;
+                z-index: -1;
+                pointer-events: none;
+                transform: translateZ(0);
+            }
+            body::before {
+                top: -220px;
+                left: -240px;
+                background: radial-gradient(circle at 30% 30%, var(--blob-1), transparent 65%),
+                    radial-gradient(circle at 70% 70%, var(--blob-2), transparent 60%);
+            }
+            body::after {
+                bottom: -260px;
+                right: -260px;
+                background: radial-gradient(circle at 40% 40%, var(--blob-3), transparent 62%),
+                    radial-gradient(circle at 75% 25%, var(--blob-2), transparent 58%);
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 999;
+                background: var(--nav-bg);
+                backdrop-filter: blur(16px);
+                border-bottom: 1px solid var(--beige-200);
+                padding: 0 5%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                height: 74px;
+                transition: box-shadow 0.3s;
+            }
+            nav.scrolled {
+                box-shadow: var(--shadow-md);
+            }
+            nav::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -1px;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, rgba(212, 168, 75, 0.35), transparent);
+                opacity: 0.25;
+                pointer-events: none;
+            }
+            .nav-brand {
+                font-family: "Playfair Display", serif;
+                font-size: 1.28rem;
+                color: var(--green-800);
+                font-weight: 600;
+                letter-spacing: 0.01em;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.15rem;
+            }
+            .nav-brand:hover {
+                color: var(--green-600);
+            }
+            .nav-brand span {
+                color: var(--gold-400);
+            }
+            .nav-links {
+                display: flex;
+                gap: 0.8rem;
+                align-items: center;
+            }
+            .nav-links a:not(.nav-cta) {
+                font-size: 0.92rem;
+                color: var(--text-mid);
+                text-decoration: none;
+                font-weight: 500;
+                letter-spacing: 0.02em;
+                transition: color 0.2s;
+                border: 2px solid rgba(45, 110, 69, 0.24);
+                padding: 0.42rem 0.78rem;
+                border-radius: 999px;
+                background: transparent;
+                transition:
+                    color 0.2s,
+                    border-color 0.2s,
+                    transform 0.2s,
+                    background 0.2s;
+            }
+            .nav-links a:not(.nav-cta):hover {
+                color: var(--green-600);
+                border-color: var(--gold-400);
+                background: var(--gold-100);
+                transform: translateY(-1px);
+            }
+            .nav-links a:not(.nav-cta):focus-visible {
+                outline: 3px solid rgba(212, 168, 75, 0.55);
+                outline-offset: 2px;
+            }
+            [data-theme="dark"] .nav-links a:not(.nav-cta) {
+                border-color: rgba(255, 255, 255, 0.18);
+            }
+            [data-theme="dark"] .nav-links a:not(.nav-cta):hover {
+                background: rgba(227, 192, 108, 0.14);
+                border-color: var(--gold-300);
+            }
+            .nav-cta {
+                background: var(--green-600);
+                color: var(--on-accent) !important;
+                padding: 0.55rem 1.25rem;
+                border-radius: 50px;
+                font-size: 0.88rem !important;
+                border: 2px solid var(--gold-400);
+                transition:
+                    background 0.2s,
+                    transform 0.2s !important;
+            }
+            .nav-cta:hover {
+                background: var(--green-800) !important;
+                transform: translateY(-1px);
+            }
+            [data-theme="dark"] .nav-cta {
+                border-color: var(--gold-300);
+            }
+            .theme-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 38px;
+                height: 38px;
+                border-radius: 999px;
+                border: 2px solid rgba(45, 110, 69, 0.24);
+                background: transparent;
+                color: var(--text-mid);
+                cursor: pointer;
+                transition:
+                    transform 0.2s,
+                    background 0.2s,
+                    border-color 0.2s;
+            }
+            [data-theme="dark"] .theme-toggle {
+                border-color: rgba(255, 255, 255, 0.18);
+                background: transparent;
+            }
+            .theme-toggle:hover {
+                transform: translateY(-1px);
+                border-color: var(--gold-400);
+                background: var(--gold-100);
+            }
+            [data-theme="dark"] .theme-toggle:hover {
+                border-color: var(--gold-300);
+                background: rgba(227, 192, 108, 0.14);
+            }
+            .theme-toggle:focus-visible {
+                outline: 3px solid rgba(180, 146, 46, 0.45);
+                outline-offset: 2px;
+            }
+            .hamburger {
+                display: none;
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+                padding: 4px;
+            }
+            .hamburger span {
+                display: block;
+                width: 22px;
+                height: 2px;
+                background: var(--green-800);
+                border-radius: 2px;
+                transition: all 0.3s;
+            }
+            .mobile-menu {
+                display: none;
+                position: fixed;
+                top: 66px;
+                left: 0;
+                right: 0;
+                background: var(--beige-50);
+                border-bottom: 1px solid var(--beige-200);
+                padding: 1.2rem 5%;
+                flex-direction: column;
+                gap: 1rem;
+                z-index: 998;
+            }
+            .mobile-menu.open {
+                display: flex;
+            }
+            .mobile-menu a {
+                font-size: 0.9rem;
+                color: var(--text-mid);
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+            #hero {
+                min-height: 100vh;
+                background: linear-gradient(160deg, var(--green-50) 0%, var(--beige-50) 55%, var(--gold-100) 100%);
+                display: flex;
+                align-items: center;
+                padding: 120px 5% 80px;
+                position: relative;
+                overflow: hidden;
+            }
+            #hero::before {
+                content: "";
+                position: absolute;
+                right: -120px;
+                top: 80px;
+                width: 440px;
+                height: 440px;
+                border-radius: 999px;
+                background: radial-gradient(circle at 30% 30%, rgba(212, 168, 75, 0.35), transparent 60%),
+                    radial-gradient(circle at 70% 70%, rgba(45, 110, 69, 0.25), transparent 62%);
+                filter: blur(35px);
+                opacity: 0.45;
+                pointer-events: none;
+            }
+            .hero-pattern {
+                position: absolute;
+                inset: 0;
+                opacity: 0.04;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%232d6e45' stroke-width='0.8'%3E%3Cpolygon points='30,2 56,16 56,44 30,58 4,44 4,16'/%3E%3Cpolygon points='30,10 48,20 48,40 30,50 12,40 12,20'/%3E%3Cpolygon points='30,18 40,24 40,36 30,42 20,36 20,24'/%3E%3C/g%3E%3C/svg%3E");
+                background-size: 60px 60px;
+                animation: pattern-drift 18s linear infinite;
+            }
+            @keyframes pattern-drift {
+                from {
+                    transform: translate3d(0, 0, 0);
+                }
+                to {
+                    transform: translate3d(-60px, -60px, 0);
+                }
+            }
+            .hero-content {
+                position: relative;
+                max-width: 660px;
+            }
+            .hero-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                background: var(--green-100);
+                color: var(--green-800);
+                padding: 0.35rem 1rem;
+                border-radius: 50px;
+                font-size: 0.78rem;
+                font-weight: 600;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                margin-bottom: 1.5rem;
+                border: 1px solid var(--green-200);
+            }
+            .hero-badge .dot {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--green-600);
+            }
+            h1.hero-title {
+                font-family: "Playfair Display", serif;
+                font-size: clamp(2.55rem, 5.9vw, 4.15rem);
+                line-height: 1.18;
+                color: var(--green-800);
+                margin-bottom: 1.3rem;
+                font-weight: 600;
+            }
+            h1.hero-title em {
+                color: var(--gold-400);
+                font-style: italic;
+            }
+            .hero-sub {
+                font-size: 1.18rem;
+                color: var(--text-mid);
+                margin-bottom: 2.4rem;
+                max-width: 560px;
+                line-height: 1.75;
+            }
+            .hero-btns {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+            .btn-primary {
+                background: var(--green-600);
+                color: var(--on-accent);
+                padding: 0.95rem 2.15rem;
+                border-radius: 50px;
+                font-size: 0.98rem;
+                font-weight: 600;
+                text-decoration: none;
+                letter-spacing: 0.02em;
+                transition: all 0.25s;
+                border: 2px solid var(--green-600);
+                display: inline-block;
+                position: relative;
+                overflow: hidden;
+            }
+            .btn-primary::before {
+                content: "";
+                position: absolute;
+                inset: -40% -30%;
+                background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.28), transparent 65%);
+                transform: translateX(-40%) rotate(6deg);
+                opacity: 0;
+                transition:
+                    opacity 0.2s,
+                    transform 0.45s;
+            }
+            .btn-primary:hover {
+                background: var(--green-800);
+                border-color: var(--green-800);
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-md);
+            }
+            .btn-primary:hover::before {
+                opacity: 1;
+                transform: translateX(45%) rotate(6deg);
+            }
+            .btn-outline {
+                background: transparent;
+                color: var(--green-700, var(--green-600));
+                padding: 0.95rem 2.15rem;
+                border-radius: 50px;
+                font-size: 0.98rem;
+                font-weight: 600;
+                text-decoration: none;
+                letter-spacing: 0.02em;
+                transition: all 0.25s;
+                border: 2px solid var(--green-300);
+                display: inline-block;
+            }
+            .btn-outline:hover {
+                border-color: var(--green-600);
+                color: var(--green-800);
+                background: var(--green-50);
+                transform: translateY(-2px);
+            }
+            .hero-stats {
+                display: flex;
+                gap: 2.5rem;
+                margin-top: 3.5rem;
+                flex-wrap: wrap;
+            }
+            .stat-item {
+                display: flex;
+                flex-direction: column;
+            }
+            .stat-num {
+                font-family: "Playfair Display", serif;
+                font-size: 2.15rem;
+                color: var(--green-800);
+                font-weight: 600;
+                line-height: 1;
+            }
+            .stat-label {
+                font-size: 0.86rem;
+                color: var(--text-muted);
+                margin-top: 0.25rem;
+                letter-spacing: 0.03em;
+            }
+
+            section {
+                padding: 104px 5%;
+            }
+            section:not(#hero) {
+                position: relative;
+            }
+            section:not(#hero)::before {
+                content: "";
+                position: absolute;
+                left: 5%;
+                right: 5%;
+                top: 0;
+                height: 1px;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(45, 110, 69, 0.18),
+                    rgba(212, 168, 75, 0.18),
+                    transparent
+                );
+                opacity: 0.55;
+            }
+            .section-label {
+                display: inline-block;
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--gold-400);
+                margin-bottom: 0.7rem;
+            }
+            .section-title {
+                font-family: "Playfair Display", serif;
+                font-size: clamp(1.95rem, 3.8vw, 2.9rem);
+                color: var(--green-800);
+                font-weight: 600;
+                line-height: 1.25;
+                margin-bottom: 0.9rem;
+            }
+            .section-sub {
+                font-size: 1.08rem;
+                color: var(--text-muted);
+                max-width: 620px;
+                line-height: 1.75;
+            }
+            .section-header {
+                margin-bottom: 3.35rem;
+            }
+            .max-w {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            #lessons {
+                background: var(--beige-50);
+            }
+            .lessons-intro {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                background: var(--green-100);
+                border: 1px solid var(--green-200);
+                border-radius: var(--radius-sm);
+                padding: 1rem 1.35rem;
+                margin-bottom: 2.5rem;
+                font-size: 0.98rem;
+                color: var(--green-800);
+                font-weight: 500;
+            }
+            .lessons-intro svg {
+                flex-shrink: 0;
+            }
+            .cards-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+                gap: 1.75rem;
+            }
+            .lesson-card {
+                background: var(--surface);
+                border: 1px solid var(--beige-200);
+                border-radius: var(--radius);
+                padding: 2.25rem;
+                box-shadow: var(--shadow-sm);
+                transition:
+                    transform 0.25s,
+                    box-shadow 0.25s,
+                    border-color 0.25s;
+                position: relative;
+                overflow: hidden;
+            }
+            .lesson-card::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(600px 220px at 25% 0%, rgba(212, 168, 75, 0.18), transparent 55%),
+                    radial-gradient(520px 240px at 80% 110%, rgba(45, 110, 69, 0.14), transparent 58%);
+                opacity: 0;
+                transition: opacity 0.25s;
+                pointer-events: none;
+            }
+            .lesson-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                border-radius: var(--radius) var(--radius) 0 0;
+            }
+            .lesson-card.children::before {
+                background: linear-gradient(90deg, var(--green-300), var(--gold-300));
+            }
+            .lesson-card.adults::before {
+                background: linear-gradient(90deg, var(--gold-300), var(--green-300));
+            }
+            .lesson-card:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-lg);
+                border-color: rgba(212, 168, 75, 0.45);
+            }
+            .lesson-card:hover::after {
+                opacity: 1;
+            }
+            .card-icon {
+                width: 48px;
+                height: 48px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.2rem;
+                font-size: 22px;
+            }
+            .card-icon.green {
+                background: var(--green-100);
+            }
+            .card-icon.gold {
+                background: var(--gold-100);
+            }
+            .card-tag {
+                display: inline-block;
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                padding: 0.25rem 0.7rem;
+                border-radius: 50px;
+                margin-bottom: 0.8rem;
+            }
+            .card-tag.green {
+                background: var(--green-100);
+                color: var(--green-800);
+            }
+            .card-tag.gold {
+                background: var(--gold-100);
+                color: var(--gold-600);
+            }
+            .lesson-card h3 {
+                font-family: "Playfair Display", serif;
+                font-size: 1.5rem;
+                color: var(--green-800);
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+            }
+            .lesson-card p {
+                font-size: 1rem;
+                color: var(--text-muted);
+                margin-bottom: 1.3rem;
+                line-height: 1.65;
+            }
+            .feature-list {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 0.55rem;
+                margin-bottom: 1.5rem;
+            }
+            .feature-list li {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.6rem;
+                font-size: 0.98rem;
+                color: var(--text-mid);
+            }
+            .feature-list li::before {
+                content: "";
+                display: block;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--green-300);
+                margin-top: 0.5rem;
+                flex-shrink: 0;
+            }
+            .price-block {
+                background: var(--beige-50);
+                border: 1px solid var(--beige-200);
+                border-radius: var(--radius-sm);
+                padding: 1rem 1.2rem;
+            }
+            .price-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .price-row + .price-row {
+                margin-top: 0.5rem;
+                padding-top: 0.5rem;
+                border-top: 1px solid var(--beige-200);
+            }
+            .price-label {
+                font-size: 0.92rem;
+                color: var(--text-muted);
+            }
+            .price-val {
+                font-family: "Playfair Display", serif;
+                font-size: 1.22rem;
+                color: var(--green-800);
+                font-weight: 600;
+            }
+
+            #location {
+                background: var(--surface);
+            }
+            .location-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 1.2rem;
+            }
+            .loc-card {
+                border: 1px solid var(--beige-200);
+                border-radius: var(--radius);
+                padding: 1.8rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.8rem;
+                transition: transform 0.2s;
+            }
+            .loc-card:hover {
+                transform: translateY(-3px);
+                box-shadow: var(--shadow-sm);
+            }
+            .loc-icon {
+                font-size: 2rem;
+            }
+            .loc-card h4 {
+                font-family: "Playfair Display", serif;
+                font-size: 1.1rem;
+                color: var(--green-800);
+            }
+            .loc-card p {
+                font-size: 0.86rem;
+                color: var(--text-muted);
+                line-height: 1.65;
+            }
+            .loc-badge {
+                display: inline-block;
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.07em;
+                padding: 0.2rem 0.65rem;
+                border-radius: 50px;
+                text-transform: uppercase;
+            }
+            .loc-badge.green {
+                background: var(--green-100);
+                color: var(--green-800);
+            }
+            .loc-badge.gold {
+                background: var(--gold-100);
+                color: var(--gold-600);
+            }
+
+            #trust {
+                background: var(--brand-deep);
+            }
+            #trust .section-title {
+                color: #ffffff;
+            }
+            #trust .section-label {
+                color: var(--gold-300);
+            }
+            #trust .section-sub {
+                color: rgba(255, 255, 255, 0.65);
+            }
+            .trust-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+            .trust-badge {
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: var(--radius);
+                padding: 1.5rem 1.2rem;
+                text-align: center;
+                transition: background 0.2s;
+            }
+            .trust-badge:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+            .trust-badge .tb-icon {
+                font-size: 2rem;
+                margin-bottom: 0.6rem;
+                display: block;
+            }
+            .trust-badge h4 {
+                font-size: 0.88rem;
+                font-weight: 600;
+                color: #ffffff;
+                margin-bottom: 0.3rem;
+            }
+            .trust-badge p {
+                font-size: 0.78rem;
+                color: rgba(255, 255, 255, 0.62);
+                line-height: 1.55;
+            }
+
+            #progress {
+                background: var(--beige-50);
+            }
+            .progress-steps {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                max-width: 680px;
+            }
+            .step-item {
+                display: flex;
+                gap: 1.5rem;
+                position: relative;
+                padding-bottom: 2rem;
+            }
+            .step-item:last-child {
+                padding-bottom: 0;
+            }
+            .step-left {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .step-num {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: var(--green-600);
+                color: #ffffff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.85rem;
+                font-weight: 700;
+                flex-shrink: 0;
+                z-index: 1;
+            }
+            .step-line {
+                width: 2px;
+                flex: 1;
+                background: var(--green-200);
+                margin-top: 0;
+            }
+            .step-item:last-child .step-line {
+                display: none;
+            }
+            .step-content {
+                padding-top: 0.5rem;
+            }
+            .step-content h4 {
+                font-family: "Playfair Display", serif;
+                font-size: 1.05rem;
+                color: var(--green-800);
+                margin-bottom: 0.35rem;
+            }
+            .step-content p {
+                font-size: 0.86rem;
+                color: var(--text-muted);
+                line-height: 1.65;
+            }
+            .whatsapp-pill {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                background: #25d366;
+                color: #ffffff;
+                padding: 0.5rem 1.1rem;
+                border-radius: 50px;
+                font-size: 0.82rem;
+                font-weight: 600;
+                margin-top: 2rem;
+            }
+
+            #trial {
+                background: linear-gradient(135deg, var(--green-50) 0%, var(--gold-100) 100%);
+            }
+            .trial-inner {
+                background: var(--surface);
+                border: 1px solid var(--beige-200);
+                border-radius: var(--radius);
+                padding: 3rem;
+                display: grid;
+                grid-template-columns: 1fr auto;
+                gap: 2rem;
+                align-items: center;
+                box-shadow: var(--shadow-md);
+                max-width: 820px;
+                margin: 0 auto;
+            }
+            .trial-inner h3 {
+                font-family: "Playfair Display", serif;
+                font-size: 1.55rem;
+                color: var(--green-800);
+                margin-bottom: 0.5rem;
+            }
+            .trial-inner p {
+                font-size: 0.9rem;
+                color: var(--text-muted);
+                line-height: 1.7;
+            }
+            .payment-icons {
+                display: flex;
+                gap: 0.6rem;
+                flex-wrap: wrap;
+                margin-top: 1.2rem;
+            }
+            .pay-icon {
+                background: var(--beige-100);
+                border: 1px solid var(--beige-200);
+                border-radius: var(--radius-sm);
+                padding: 0.35rem 0.65rem;
+                font-size: 0.72rem;
+                font-weight: 600;
+                color: var(--text-mid);
+                letter-spacing: 0.04em;
+            }
+
+            #policies {
+                background: var(--surface);
+            }
+            .policy-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 1.2rem;
+            }
+            .policy-card {
+                border: 1px solid var(--beige-200);
+                border-radius: var(--radius);
+                padding: 1.5rem;
+                background: var(--beige-50);
+            }
+            .policy-card h4 {
+                font-size: 0.9rem;
+                font-weight: 700;
+                color: var(--green-800);
+                margin-bottom: 0.5rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .policy-card p {
+                font-size: 0.83rem;
+                color: var(--text-muted);
+                line-height: 1.65;
+            }
+            .policy-note {
+                margin-top: 1.5rem;
+                text-align: center;
+                font-size: 0.83rem;
+                color: var(--text-muted);
+                background: var(--beige-100);
+                padding: 0.75rem 1.2rem;
+                border-radius: var(--radius-sm);
+                border: 1px solid var(--beige-200);
+                display: inline-block;
+            }
+
+            #faq {
+                background: var(--beige-50);
+            }
+            .faq-list {
+                max-width: 700px;
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .faq-item {
+                background: var(--surface);
+                border: 1px solid var(--beige-200);
+                border-radius: var(--radius-sm);
+                overflow: hidden;
+            }
+            .faq-q {
+                width: 100%;
+                text-align: left;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 1.1rem 1.3rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: var(--green-800);
+                font-family: "Inter", sans-serif;
+                transition:
+                    background 0.2s,
+                    color 0.2s;
+            }
+            .faq-q:hover {
+                background: var(--beige-50);
+            }
+            .faq-q .chevron {
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                background: var(--green-100);
+                color: var(--green-800);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                flex-shrink: 0;
+                transition: transform 0.3s;
+                font-weight: 700;
+            }
+            .faq-item.open .chevron {
+                transform: rotate(180deg);
+            }
+            .faq-a {
+                max-height: 0;
+                opacity: 0;
+                transform: translateY(-6px);
+                overflow: hidden;
+                padding: 0 1.3rem 0;
+                font-size: 0.86rem;
+                color: var(--text-muted);
+                line-height: 1.75;
+                border-top: 1px solid var(--beige-200);
+                transition:
+                    max-height 0.45s cubic-bezier(0.2, 0.9, 0.2, 1),
+                    opacity 0.25s ease,
+                    transform 0.35s ease,
+                    padding 0.35s ease;
+            }
+            .faq-item.open .faq-a {
+                max-height: 360px;
+                opacity: 1;
+                transform: translateY(0);
+                padding: 0.9rem 1.3rem 1.1rem;
+            }
+
+            #cta {
+                background: var(--brand-deep);
+                text-align: center;
+                padding: 112px 5%;
+            }
+            #cta .section-label {
+                color: var(--gold-300);
+            }
+            #cta h2 {
+                font-family: "Playfair Display", serif;
+                font-size: clamp(2.15rem, 4.4vw, 3.35rem);
+                color: #ffffff;
+                margin-bottom: 1rem;
+                font-weight: 600;
+                line-height: 1.25;
+            }
+            #cta p {
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 1.08rem;
+                max-width: 640px;
+                margin: 0 auto 2.2rem;
+                line-height: 1.75;
+            }
+            .cta-btns {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .btn-gold {
+                background: var(--gold-300);
+                color: var(--text-dark);
+                padding: 0.98rem 2.25rem;
+                border-radius: 50px;
+                font-size: 0.98rem;
+                font-weight: 700;
+                border: none;
+                cursor: pointer;
+                text-decoration: none;
+                letter-spacing: 0.02em;
+                transition: all 0.25s;
+                display: inline-block;
+                position: relative;
+                overflow: hidden;
+            }
+            .btn-gold::before {
+                content: "";
+                position: absolute;
+                inset: -45% -30%;
+                background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.25), transparent 65%);
+                transform: translateX(-45%) rotate(6deg);
+                opacity: 0;
+                transition:
+                    opacity 0.2s,
+                    transform 0.45s;
+            }
+            .btn-gold:hover {
+                background: var(--gold-400);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            }
+            .btn-gold:hover::before {
+                opacity: 1;
+                transform: translateX(45%) rotate(6deg);
+            }
+            .btn-gold:disabled {
+                opacity: 0.75;
+                cursor: not-allowed;
+                transform: none;
+                box-shadow: none;
+            }
+            .btn-ghost {
+                background: transparent;
+                color: #ffffff;
+                padding: 0.98rem 2.25rem;
+                border-radius: 50px;
+                font-size: 0.98rem;
+                font-weight: 600;
+                text-decoration: none;
+                letter-spacing: 0.02em;
+                transition: all 0.25s;
+                display: inline-block;
+                border: 2px solid rgba(255, 255, 255, 0.4);
+            }
+            .btn-ghost:hover {
+                border-color: rgba(255, 255, 255, 0.8);
+                background: rgba(255, 255, 255, 0.07);
+            }
+
+            .contact-form {
+                width: min(720px, 100%);
+                margin: 2.25rem auto 0;
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                border-radius: var(--radius);
+                padding: 1.5rem;
+                text-align: left;
+            }
+            .contact-form .grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .contact-form label {
+                display: block;
+                font-size: 0.86rem;
+                color: rgba(255, 255, 255, 0.8);
+                font-weight: 600;
+                letter-spacing: 0.03em;
+                margin-bottom: 0.35rem;
+            }
+            .contact-form input,
+            .contact-form select,
+            .contact-form textarea {
+                width: 100%;
+                border-radius: 12px;
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                background: rgba(255, 255, 255, 0.08);
+                color: rgba(255, 255, 255, 0.9);
+                padding: 0.82rem 0.95rem;
+                font-size: 1rem;
+                outline: none;
+            }
+            .contact-form input::placeholder,
+            .contact-form textarea::placeholder {
+                color: rgba(255, 255, 255, 0.35);
+            }
+            .contact-form select option {
+                background: #1a2a22;
+                color: #ffffff;
+            }
+            .contact-form textarea {
+                min-height: 110px;
+                resize: vertical;
+            }
+            .contact-form input:focus,
+            .contact-form select:focus,
+            .contact-form textarea:focus {
+                border-color: rgba(212, 168, 75, 0.7);
+                box-shadow: 0 0 0 3px rgba(212, 168, 75, 0.18);
+            }
+            .contact-form .actions {
+                display: flex;
+                gap: 0.9rem;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 0.9rem;
+                flex-wrap: wrap;
+            }
+            .form-status {
+                font-size: 0.92rem;
+                color: rgba(255, 255, 255, 0.82);
+            }
+            .form-status.error {
+                color: #ffd1d1;
+            }
+            .form-status.success {
+                color: #d1ffe4;
+            }
+            @media (max-width: 680px) {
+                .contact-form .grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            footer {
+                background: var(--footer-bg);
+                color: var(--footer-text);
+                padding: 3.25rem 5%;
+            }
+            .footer-inner {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 2.5rem;
+            }
+            .footer-brand {
+                font-family: "Playfair Display", serif;
+                font-size: 1.28rem;
+                color: var(--footer-text);
+                margin-bottom: 0.6rem;
+            }
+            .footer-brand span {
+                color: var(--gold-300);
+            }
+            .footer-desc {
+                font-size: 0.95rem;
+                color: var(--footer-muted);
+                line-height: 1.65;
+                max-width: 320px;
+            }
+            .footer-col h5 {
+                font-size: 0.86rem;
+                font-weight: 700;
+                color: var(--footer-text);
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-bottom: 1rem;
+            }
+            .footer-col a {
+                display: block;
+                font-size: 0.95rem;
+                color: var(--footer-muted);
+                text-decoration: none;
+                margin-bottom: 0.5rem;
+                transition: color 0.2s;
+            }
+            .footer-col a:hover {
+                color: var(--footer-text);
+            }
+            .footer-bottom {
+                max-width: 1200px;
+                margin: 2rem auto 0;
+                padding-top: 1.5rem;
+                border-top: 1px solid var(--footer-border);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 0.86rem;
+                color: var(--footer-bottom-text);
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .footer-bottom a {
+                color: var(--footer-muted);
+                text-decoration: none;
+            }
+
+            .fade-in {
+                opacity: 0;
+                transform: translateY(24px);
+                transition:
+                    opacity 0.6s ease,
+                    transform 0.6s ease;
+            }
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            @media (prefers-reduced-motion: no-preference) {
+                .fade-in {
+                    transition:
+                        opacity 0.75s cubic-bezier(0.2, 0.9, 0.2, 1),
+                        transform 0.75s cubic-bezier(0.2, 0.9, 0.2, 1);
+                }
+                .lesson-card,
+                .loc-card,
+                .trust-badge {
+                    will-change: transform;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .nav-links {
+                    display: none;
+                }
+                .hamburger {
+                    display: flex;
+                }
+                section {
+                    padding: 78px 5%;
+                }
+                .trial-inner {
+                    grid-template-columns: 1fr;
+                    text-align: center;
+                    padding: 2rem;
+                }
+                .trial-inner .btn-primary {
+                    margin: 0 auto;
+                }
+                .footer-inner {
+                    grid-template-columns: 1fr;
+                    gap: 1.5rem;
+                }
+                .footer-desc {
+                    max-width: none;
+                }
+                .hero-stats {
+                    gap: 1.8rem;
+                }
+            }
+            @media (max-width: 480px) {
+                .cards-grid {
+                    grid-template-columns: 1fr;
+                }
+                .trust-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+                .policy-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-behavior: auto;
+                }
+                *,
+                *::before,
+                *::after {
+                    animation-duration: 0.001ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.001ms !important;
+                }
+            }
+
+            .max-w {
+                position: relative;
+                z-index: 1;
+            }
+
+            .section-pattern {
+                position: absolute;
+                inset: 0;
+                opacity: var(--pattern-opacity);
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%232d6e45' stroke-width='1.5'%3E%3Cpolygon points='30,2 56,16 56,44 30,58 4,44 4,16'/%3E%3Cpolygon points='30,10 48,20 48,40 30,50 12,40 12,20'/%3E%3Cpolygon points='30,18 40,24 40,36 30,42 20,36 20,24'/%3E%3C/g%3E%3C/svg%3E");
+                background-size: 60px 60px;
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            #trust .section-pattern,
+            #cta .section-pattern {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23d4a84b' stroke-width='0.8'%3E%3Cpolygon points='30,2 56,16 56,44 30,58 4,44 4,16'/%3E%3Cpolygon points='30,10 48,20 48,40 30,50 12,40 12,20'/%3E%3Cpolygon points='30,18 40,24 40,36 30,42 20,36 20,24'/%3E%3C/g%3E%3C/svg%3E");
+                opacity: 0.08;
+            }
+        </style>
+    </head>
+    <body>
+        <nav id="navbar">
+            <a class="nav-brand" href="#hero" aria-label="Go to top">Al-<span>Nūr</span> Learning</a>
+            <div class="nav-links">
+                <a href="#lessons">Lessons</a>
+                <a href="#location">Location</a>
+                <a href="#trust">About</a>
+                <a href="#faq">FAQ</a>
+                <a href="#cta" class="nav-cta">Book Trial</a>
+                <button class="theme-toggle" type="button" id="themeToggle" aria-label="Toggle theme">
+                    <span id="themeIcon" aria-hidden="true">🌙</span>
+                </button>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#lessons" onclick="closeMenu()">Lessons</a>
+            <a href="#location" onclick="closeMenu()">Location</a>
+            <a href="#trust" onclick="closeMenu()">About</a>
+            <a href="#progress" onclick="closeMenu()">Progress</a>
+            <a href="#faq" onclick="closeMenu()">FAQ</a>
+            <a href="#cta" onclick="closeMenu()">Book Trial</a>
+            <button class="theme-toggle" type="button" id="themeToggleMobile" aria-label="Toggle theme">
+                <span id="themeIconMobile" aria-hidden="true">🌙</span>
+            </button>
+        </div>
+
+        <section id="hero">
+            <div class="hero-pattern"></div>
+            <div class="hero-content fade-in">
+                <div class="hero-badge"><span class="dot"></span> Now accepting new students</div>
+                <h1 class="hero-title">Personalised <em>Qur'an</em> &<br />Qāʿidah Lessons</h1>
+                <p class="hero-sub">
+                    One-to-one and small group teaching tailored for children and adults — available both online and
+                    in-person, with flexible timings to suit your family.
+                </p>
+                <div class="hero-btns">
+                    <a href="#cta" class="btn-primary">Book a Trial Lesson</a>
+                    <a href="#lessons" class="btn-outline">View Lessons</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">1:1</span>
+                        <span class="stat-label">Personal attention</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">DBS</span>
+                        <span class="stat-label">Checked & verified</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">Online<br />& in-person</span>
+                        <span class="stat-label">Same price, both ways</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="lessons">
+            <div class="section-pattern"></div>
+            <div class="max-w">
+                <div class="section-header fade-in">
+                    <span class="section-label">Lessons</span>
+                    <h2 class="section-title">Structured learning for every stage</h2>
+                    <p class="section-sub">
+                        All lessons are available online and in-person at identical pricing — learn in whichever way
+                        works best for you.
+                    </p>
+                </div>
+                <div class="lessons-intro fade-in">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="color: var(--green-600)">
+                        <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M9 5v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                    Online and in-person lessons are priced identically — no premium for either format.
+                </div>
+                <div class="cards-grid fade-in">
+                    <div class="lesson-card children">
+                        <div class="card-icon green">🌱</div>
+                        <span class="card-tag green">For Children</span>
+                        <h3>Children's Lessons</h3>
+                        <p>
+                            Engaging, nurturing lessons designed to build a strong foundation in Qur'anic recitation,
+                            Qāʿidah, and Islamic values from an early age.
+                        </p>
+                        <ul class="feature-list">
+                            <li>Qur'an, Qāʿidah & optional Islamic Studies</li>
+                            <li>20-minute or 45-minute sessions</li>
+                            <li>One-to-one or small group (2 students)</li>
+                            <li>Patient, child-friendly teaching approach</li>
+                        </ul>
+                        <div class="price-block">
+                            <div class="price-row">
+                                <span class="price-label">One-to-one (per hour)</span>
+                                <span class="price-val">Enquire</span>
+                            </div>
+                            <div class="price-row">
+                                <span class="price-label">Small group — per student</span>
+                                <span class="price-val">£20/hr (shared)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lesson-card adults">
+                        <div class="card-icon gold">📖</div>
+                        <span class="card-tag gold">For Adults</span>
+                        <h3>Adult Lessons</h3>
+                        <p>
+                            Private, personalised recitation support for adults at any level — whether you're starting
+                            from scratch or refining your Tajwīd.
+                        </p>
+                        <ul class="feature-list">
+                            <li>One-to-one only — fully private</li>
+                            <li>Personalised recitation & Tajwīd support</li>
+                            <li>Flexible pacing to suit your goals</li>
+                            <li>Beginners warmly welcomed</li>
+                        </ul>
+                        <div class="price-block">
+                            <div class="price-row">
+                                <span class="price-label">30-minute session</span>
+                                <span class="price-val">£15</span>
+                            </div>
+                            <div class="price-row">
+                                <span class="price-label">60-minute session</span>
+                                <span class="price-val">£25</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="location">
+            <div class="section-pattern"></div>
+            <div class="max-w">
+                <div class="section-header fade-in">
+                    <span class="section-label">Location & Availability</span>
+                    <h2 class="section-title">Flexible delivery, wherever you are</h2>
+                    <p class="section-sub">
+                        In-person lessons are available locally. Further afield? Online lessons work just as well.
+                    </p>
+                </div>
+                <div class="location-grid fade-in">
+                    <div class="loc-card">
+                        <span class="loc-icon">📍</span>
+                        <span class="loc-badge green">In-Person</span>
+                        <h4>Local — within 4 miles of B9</h4>
+                        <p>
+                            Home visits available within a 4-mile radius of the B9 postcode in Birmingham. A familiar,
+                            comfortable setting for younger learners.
+                        </p>
+                    </div>
+                    <div class="loc-card">
+                        <span class="loc-icon">💻</span>
+                        <span class="loc-badge gold">Online</span>
+                        <h4>Anywhere in the UK & beyond</h4>
+                        <p>
+                            For students outside the local area, online lessons via video call offer the same quality
+                            experience with no travel required.
+                        </p>
+                    </div>
+                    <div class="loc-card">
+                        <span class="loc-icon">🗓️</span>
+                        <span class="loc-badge green">Flexible Times</span>
+                        <h4>Timings to suit your schedule</h4>
+                        <p>
+                            Morning, afternoon, and evening slots available across the week. Regular weekly times help
+                            build a consistent learning habit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trust">
+            <div class="section-pattern"></div>
+            <div class="max-w">
+                <div class="section-header fade-in">
+                    <span class="section-label">Experience & Trust</span>
+                    <h2 class="section-title">Teaching with care and credentials</h2>
+                    <p class="section-sub">
+                        Your child's safety and progress are our first priority. Every measure is in place for a safe
+                        and effective learning environment.
+                    </p>
+                </div>
+                <div class="trust-grid fade-in">
+                    <div class="trust-badge">
+                        <span class="tb-icon">🛡️</span>
+                        <h4>DBS Checked</h4>
+                        <p>Fully vetted and DBS checked — documentation available upon request.</p>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="tb-icon">👶</span>
+                        <h4>Child-Specialist Teaching</h4>
+                        <p>Experienced teaching children of varying ages and abilities with patience and positivity.</p>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="tb-icon">⭐</span>
+                        <h4>References Available</h4>
+                        <p>
+                            Character and teaching references available upon request from previous students and
+                            families.
+                        </p>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="tb-icon">🎓</span>
+                        <h4>Qualified & Knowledgeable</h4>
+                        <p>Strong grounding in Qur'anic sciences, Tajwīd rules, and Qāʿidah methodology.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="progress">
+            <div class="section-pattern"></div>
+            <div class="max-w">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start">
+                    <div class="fade-in">
+                        <span class="section-label">Progress & Communication</span>
+                        <h2 class="section-title">Always kept in the loop</h2>
+                        <p class="section-sub">
+                            Regular updates and progress tracking ensure you're always aware of how your child is
+                            developing.
+                        </p>
+                        <div class="whatsapp-pill">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+                                />
+                                <path
+                                    d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.527 5.845L0 24l6.335-1.502A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.371l-.36-.213-3.727.884.944-3.638-.234-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"
+                                />
+                            </svg>
+                            Updates via WhatsApp
+                        </div>
+                    </div>
+                    <div class="fade-in">
+                        <div class="progress-steps">
+                            <div class="step-item">
+                                <div class="step-left">
+                                    <div class="step-num">1</div>
+                                    <div class="step-line"></div>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Lesson takes place</h4>
+                                    <p>
+                                        Each session is focused, structured, and paced to the student's individual
+                                        level.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-left">
+                                    <div class="step-num">2</div>
+                                    <div class="step-line"></div>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Progress noted</h4>
+                                    <p>
+                                        Key achievements, areas to work on, and homework or practice tasks are recorded.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-left">
+                                    <div class="step-num">3</div>
+                                    <div class="step-line"></div>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Parents updated via WhatsApp</h4>
+                                    <p>A brief update is sent after lessons so parents remain informed and engaged.</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-left">
+                                    <div class="step-num">4</div>
+                                    <div class="step-line"></div>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Regular review</h4>
+                                    <p>
+                                        Periodic reviews ensure the student is progressing and lessons remain
+                                        well-suited to their needs.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trial">
+            <div class="section-pattern"></div>
+            <div class="max-w">
+                <div class="trial-inner fade-in">
+                    <div>
+                        <span class="section-label">Getting Started</span>
+                        <h3>Begin with a free 20-minute trial</h3>
+                        <p>
+                            Not sure if it's the right fit? A no-obligation trial lesson lets you and your child
+                            experience the teaching style before committing to regular sessions.
+                        </p>
+                        <div class="payment-icons">
+                            <span class="pay-icon">Bank Transfer</span>
+                            <span class="pay-icon">Cash</span>
+                            <span class="pay-icon">PayPal</span>
+                            <span class="pay-icon">Monzo</span>
+                        </div>
+                    </div>
+                    <div style="text-align: center; flex-shrink: 0">
+                        <a href="#cta" class="btn-primary" style="white-space: nowrap">Book Your Trial</a>
+                        <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 0.7rem">
+                            No commitment required
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="policies">
+            <div class="section-pattern"></div>
+            <div class="max-w">
+                <div class="section-header fade-in">
+                    <span class="section-label">Policies</span>
+                    <h2 class="section-title">Clear and fair guidelines</h2>
+                    <p class="section-sub">
+                        We aim to keep things simple, respectful, and mutually fair for all students and families.
+                    </p>
+                </div>
+                <div class="policy-grid fade-in">
+                    <div class="policy-card">
+                        <h4>❌ Cancellations</h4>
+                        <p>
+                            Please provide as much notice as possible when cancelling a lesson. Late cancellations may
+                            be charged.
+                        </p>
+                    </div>
+                    <div class="policy-card">
+                        <h4>🔄 Rescheduling</h4>
+                        <p>
+                            Lessons can be rescheduled where possible. We'll always try to find an alternative slot that
+                            works for both parties.
+                        </p>
+                    </div>
+                    <div class="policy-card">
+                        <h4>💳 Payments</h4>
+                        <p>
+                            Payment is typically requested weekly or monthly in advance. Bank transfer, cash, PayPal,
+                            and Monzo are all accepted.
+                        </p>
+                    </div>
+                    <div class="policy-card">
+                        <h4>📋 Missed Lessons</h4>
+                        <p>
+                            Regular attendance is encouraged for the best progress. Consistently missed lessons may
+                            affect scheduling availability.
+                        </p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 1.5rem">
+                    <span class="policy-note"
+                        >Full policy details will be shared upon enquiry or before lessons begin.</span
+                    >
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="section-pattern"></div>
+            <div class="max-w">
+                <div class="section-header fade-in">
+                    <span class="section-label">FAQ</span>
+                    <h2 class="section-title">Common questions answered</h2>
+                </div>
+                <div class="faq-list fade-in">
+                    <div class="faq-item">
+                        <button class="faq-q" onclick="toggleFaq(this)">
+                            How are lessons structured for children?
+                            <span class="chevron">▾</span>
+                        </button>
+                        <div class="faq-a">
+                            Children's lessons typically begin with revision of previous material, followed by
+                            introduction of new content (letters, words, or verses), and end with a short activity or
+                            practice task. Sessions are kept focused and age-appropriate.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" onclick="toggleFaq(this)">
+                            What do we need for online lessons?
+                            <span class="chevron">▾</span>
+                        </button>
+                        <div class="faq-a">
+                            A device with a camera and microphone (smartphone, tablet, or laptop), a stable internet
+                            connection, and a quiet space. Video calls can be conducted via WhatsApp, Zoom, or another
+                            platform of your choice.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" onclick="toggleFaq(this)">
+                            What should a student bring or have ready?
+                            <span class="chevron">▾</span>
+                        </button>
+                        <div class="faq-a">
+                            Students should have their Qāʿidah book or Qur'an ready. For online lessons, the book can be
+                            held up to the camera, or a digital version can be used. A notebook for notes or homework is
+                            also helpful.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" onclick="toggleFaq(this)">
+                            Is Islamic Studies included in children's lessons?
+                            <span class="chevron">▾</span>
+                        </button>
+                        <div class="faq-a">
+                            Islamic Studies is an optional addition to children's lessons. It can cover basics such as
+                            the five pillars, Seerah, duas, and manners — integrated gently alongside Qur'an and Qāʿidah
+                            at the parent's request.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" onclick="toggleFaq(this)">
+                            Can adults join even as complete beginners?
+                            <span class="chevron">▾</span>
+                        </button>
+                        <div class="faq-a">
+                            Absolutely. Adults with no prior knowledge are warmly welcomed. Lessons will begin from the
+                            very basics — Arabic letters and sounds — and progress at a pace that suits you comfortably.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" onclick="toggleFaq(this)">
+                            How do I get started?
+                            <span class="chevron">▾</span>
+                        </button>
+                        <div class="faq-a">
+                            Simply use the contact details in the footer or click the 'Book a Trial' button to get in
+                            touch. We'll have a brief conversation about your needs, find a suitable time, and arrange
+                            your free trial lesson.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta">
+            <div class="section-pattern"></div>
+            <div class="fade-in">
+                <span class="section-label">Begin Today</span>
+                <h2>Start your Qur'anic journey<br />with confidence</h2>
+                <p>
+                    Book a free 20-minute trial lesson — no commitment, just an opportunity to experience a lesson and
+                    see if it's the right fit.
+                </p>
+                <div class="cta-btns">
+                    <a href="#cta-form" class="btn-gold">Book a Trial Lesson</a>
+                    <a href="https://wa.me/447700000000" class="btn-ghost">Message on WhatsApp</a>
+                </div>
+
+                <form class="contact-form" id="cta-form" aria-label="Trial lesson enquiry form">
+                    <div class="grid">
+                        <div>
+                            <label for="name">Name</label>
+                            <input id="name" name="name" autocomplete="name" required />
+                        </div>
+                        <div>
+                            <label for="contact">Phone / WhatsApp</label>
+                            <input id="contact" name="contact" autocomplete="tel" inputmode="tel" required />
+                        </div>
+                        <div>
+                            <label for="student">Student</label>
+                            <select id="student" name="student_type" required>
+                                <option value="" selected disabled>Select…</option>
+                                <option value="child">Child</option>
+                                <option value="adult">Adult</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="lesson">Lesson focus</label>
+                            <select id="lesson" name="lesson_focus" required>
+                                <option value="" selected disabled>Select…</option>
+                                <option value="qaidah">Qāʿidah</option>
+                                <option value="quran">Qur'an Recitation</option>
+                                <option value="tajweed">Tajwīd / Refinement</option>
+                                <option value="islamic-studies">Islamic Studies (children)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="margin-top: 0.9rem">
+                        <label for="message">Message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Tell us preferred days/times, online vs in-person, and any details…"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn-gold" type="submit" id="ctaSubmit">Send enquiry</button>
+                        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-inner">
+                <div>
+                    <div class="footer-brand">Al-<span>Nūr</span> Learning</div>
+                    <p class="footer-desc">
+                        Personalised Qur'an and Qāʿidah lessons for children and adults, online and in-person across
+                        Birmingham.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h5>Lessons</h5>
+                    <a href="#lessons">Children's Lessons</a>
+                    <a href="#lessons">Adult Lessons</a>
+                    <a href="#trial">Trial Lesson</a>
+                    <a href="#location">Location & Delivery</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Information</h5>
+                    <a href="#trust">About & Trust</a>
+                    <a href="#policies">Policies</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#cta">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>
+                    ©
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                    Al-Nūr Learning · Birmingham, UK
+                </span>
+                <span>Enquiries via the form above</span>
+            </div>
+        </footer>
+
+        <script>
+            const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
+            function getInitialTheme() {
+                const saved = localStorage.getItem("theme");
+                if (saved === "light" || saved === "dark") return saved;
+                return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+                    ? "dark"
+                    : "light";
+            }
+
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                localStorage.setItem("theme", theme);
+
+                const icon = theme === "dark" ? "☀️" : "🌙";
+                const t1 = document.getElementById("themeIcon");
+                const t2 = document.getElementById("themeIconMobile");
+                if (t1) t1.textContent = icon;
+                if (t2) t2.textContent = icon;
+            }
+
+            function toggleTheme() {
+                const current = document.documentElement.getAttribute("data-theme") || "light";
+                setTheme(current === "dark" ? "light" : "dark");
+            }
+
+            setTheme(getInitialTheme());
+            const themeToggle = document.getElementById("themeToggle");
+            const themeToggleMobile = document.getElementById("themeToggleMobile");
+            if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
+            if (themeToggleMobile) themeToggleMobile.addEventListener("click", toggleTheme);
+
+            const navbar = document.getElementById("navbar");
+            window.addEventListener("scroll", () => {
+                navbar.classList.toggle("scrolled", window.scrollY > 30);
+            });
+
+            function toggleMenu() {
+                document.getElementById("mobileMenu").classList.toggle("open");
+            }
+            function closeMenu() {
+                document.getElementById("mobileMenu").classList.remove("open");
+            }
+
+            function toggleFaq(btn) {
+                const item = btn.closest(".faq-item");
+                const isOpen = item.classList.contains("open");
+                document.querySelectorAll(".faq-item.open").forEach((i) => i.classList.remove("open"));
+                if (!isOpen) item.classList.add("open");
+            }
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((e, i) => {
+                        if (e.isIntersecting) {
+                            setTimeout(() => e.target.classList.add("visible"), i * 80);
+                            observer.unobserve(e.target);
+                        }
+                    });
+                },
+                { threshold: 0.08 }
+            );
+            document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+
+            const progressSection = document.getElementById("progress");
+            if (progressSection) {
+                const grid = progressSection.querySelector('[style*="grid-template-columns"]');
+                function checkGrid() {
+                    if (window.innerWidth < 700 && grid) {
+                        grid.style.gridTemplateColumns = "1fr";
+                        grid.style.gap = "2rem";
+                    } else if (grid) {
+                        grid.style.gridTemplateColumns = "1fr 1fr";
+                        grid.style.gap = "4rem";
+                    }
+                }
+                checkGrid();
+                window.addEventListener("resize", checkGrid);
+            }
+
+            const form = document.getElementById("cta-form");
+            const statusEl = document.getElementById("formStatus");
+            const submitBtn = document.getElementById("ctaSubmit");
+
+            function setFormStatus(message, type) {
+                if (!statusEl) return;
+                statusEl.textContent = message || "";
+                statusEl.classList.remove("error", "success");
+                if (type) statusEl.classList.add(type);
+            }
+
+            async function submitToFormspree(e) {
+                e.preventDefault();
+                if (!form) return;
+
+                if (!FORMSPREE_ENDPOINT || FORMSPREE_ENDPOINT.includes("YOUR_FORM_ID")) {
+                    setFormStatus("Set your Formspree endpoint in the script (FORMSPREE_ENDPOINT).", "error");
+                    return;
+                }
+
+                setFormStatus("Sending…");
+                if (submitBtn) submitBtn.disabled = true;
+
+                try {
+                    const fd = new FormData(form);
+                    fd.append("_subject", "Trial lesson enquiry");
+
+                    const res = await fetch(FORMSPREE_ENDPOINT, {
+                        method: "POST",
+                        body: fd,
+                        headers: { Accept: "application/json" },
+                    });
+
+                    if (res.ok) {
+                        form.reset();
+                        setFormStatus("Thank you — we'll get back to you soon.", "success");
+                    } else {
+                        let msg = "Something went wrong. Please try again or WhatsApp us.";
+                        try {
+                            const data = await res.json();
+                            if (data?.errors?.length) msg = data.errors.map((x) => x.message).join(" ");
+                        } catch {
+                            // ignore
+                        }
+                        setFormStatus(msg, "error");
+                    }
+                } catch {
+                    setFormStatus("Network error. Please try again or WhatsApp us.", "error");
+                } finally {
+                    if (submitBtn) submitBtn.disabled = false;
+                }
+            }
+
+            if (form) form.addEventListener("submit", submitToFormspree);
+        </script>
+    </body>
+</html>
