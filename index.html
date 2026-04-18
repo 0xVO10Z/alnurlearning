@@ -224,6 +224,31 @@
                 background: rgba(227, 192, 108, 0.14);
                 border-color: var(--gold-300);
             }
+            .nav-enquiries {
+                background: transparent;
+                color: var(--green-600) !important;
+                padding: 0.55rem 1.25rem;
+                border-radius: 50px;
+                font-size: 0.88rem !important;
+                border: 2px solid var(--green-600);
+                transition:
+                    background 0.2s,
+                    color 0.2s,
+                    transform 0.2s !important;
+                font-weight: 600;
+            }
+            .nav-enquiries:hover {
+                background: var(--green-50) !important;
+                transform: translateY(-1px);
+            }
+            [data-theme="dark"] .nav-enquiries {
+                color: var(--green-600) !important;
+                border-color: var(--green-600);
+            }
+            [data-theme="dark"] .nav-enquiries:hover {
+                background: rgba(57, 160, 107, 0.12) !important;
+            }
+
             .nav-cta {
                 background: var(--green-600);
                 color: var(--on-accent) !important;
@@ -335,22 +360,6 @@
                 filter: blur(35px);
                 opacity: 0.45;
                 pointer-events: none;
-            }
-            .hero-pattern {
-                position: absolute;
-                inset: 0;
-                opacity: 0.04;
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%232d6e45' stroke-width='0.8'%3E%3Cpolygon points='30,2 56,16 56,44 30,58 4,44 4,16'/%3E%3Cpolygon points='30,10 48,20 48,40 30,50 12,40 12,20'/%3E%3Cpolygon points='30,18 40,24 40,36 30,42 20,36 20,24'/%3E%3C/g%3E%3C/svg%3E");
-                background-size: 60px 60px;
-                animation: pattern-drift 18s linear infinite;
-            }
-            @keyframes pattern-drift {
-                from {
-                    transform: translate3d(0, 0, 0);
-                }
-                to {
-                    transform: translate3d(-60px, -60px, 0);
-                }
             }
             .hero-content {
                 position: relative;
@@ -1031,15 +1040,15 @@
                 padding: 0.9rem 1.3rem 1.1rem;
             }
 
-            #cta {
+            #enquiries {
                 background: var(--brand-deep);
                 text-align: center;
                 padding: 112px 5%;
             }
-            #cta .section-label {
+            #enquiries .section-label {
                 color: var(--gold-300);
             }
-            #cta h2 {
+            #enquiries h2 {
                 font-family: "Playfair Display", serif;
                 font-size: clamp(2.15rem, 4.4vw, 3.35rem);
                 color: #ffffff;
@@ -1047,7 +1056,7 @@
                 font-weight: 600;
                 line-height: 1.25;
             }
-            #cta p {
+            #enquiries p {
                 color: rgba(255, 255, 255, 0.7);
                 font-size: 1.08rem;
                 max-width: 640px;
@@ -1343,22 +1352,6 @@
                 position: relative;
                 z-index: 1;
             }
-
-            .section-pattern {
-                position: absolute;
-                inset: 0;
-                opacity: var(--pattern-opacity);
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%232d6e45' stroke-width='1.5'%3E%3Cpolygon points='30,2 56,16 56,44 30,58 4,44 4,16'/%3E%3Cpolygon points='30,10 48,20 48,40 30,50 12,40 12,20'/%3E%3Cpolygon points='30,18 40,24 40,36 30,42 20,36 20,24'/%3E%3C/g%3E%3C/svg%3E");
-                background-size: 60px 60px;
-                pointer-events: none;
-                z-index: 0;
-            }
-
-            #trust .section-pattern,
-            #cta .section-pattern {
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23d4a84b' stroke-width='0.8'%3E%3Cpolygon points='30,2 56,16 56,44 30,58 4,44 4,16'/%3E%3Cpolygon points='30,10 48,20 48,40 30,50 12,40 12,20'/%3E%3Cpolygon points='30,18 40,24 40,36 30,42 20,36 20,24'/%3E%3C/g%3E%3C/svg%3E");
-                opacity: 0.08;
-            }
         </style>
     </head>
     <body>
@@ -1369,7 +1362,8 @@
                 <a href="#location">Location</a>
                 <a href="#trust">About</a>
                 <a href="#faq">FAQ</a>
-                <a href="#cta" class="nav-cta">Book Trial</a>
+                <a href="#enquiries" class="nav-enquiries">Enquiries</a>
+                <a href="#trial" class="nav-cta">Book Trial</a>
                 <button class="theme-toggle" type="button" id="themeToggle" aria-label="Toggle theme">
                     <span id="themeIcon" aria-hidden="true">🌙</span>
                 </button>
@@ -1385,14 +1379,14 @@
             <a href="#trust" onclick="closeMenu()">About</a>
             <a href="#progress" onclick="closeMenu()">Progress</a>
             <a href="#faq" onclick="closeMenu()">FAQ</a>
-            <a href="#cta" onclick="closeMenu()">Book Trial</a>
+            <a href="#enquiries" onclick="closeMenu()">Enquiries</a>
+            <a href="#trial" onclick="closeMenu()">Book Trial</a>
             <button class="theme-toggle" type="button" id="themeToggleMobile" aria-label="Toggle theme">
                 <span id="themeIconMobile" aria-hidden="true">🌙</span>
             </button>
         </div>
 
         <section id="hero">
-            <div class="hero-pattern"></div>
             <div class="hero-content fade-in">
                 <div class="hero-badge"><span class="dot"></span> Now accepting new students</div>
                 <h1 class="hero-title">Personalised <em>Qur'an</em> &<br />Qāʿidah Lessons</h1>
@@ -1401,8 +1395,8 @@
                     in-person, with flexible timings to suit your family.
                 </p>
                 <div class="hero-btns">
-                    <a href="#cta" class="btn-primary">Book a Trial Lesson</a>
-                    <a href="#lessons" class="btn-outline">View Lessons</a>
+                    <a href="#trial" class="btn-primary">Book a Trial Lesson</a>
+                    <a href="#enquiries" class="btn-outline">Make an Enquiry</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -1422,7 +1416,6 @@
         </section>
 
         <section id="lessons">
-            <div class="section-pattern"></div>
             <div class="max-w">
                 <div class="section-header fade-in">
                     <span class="section-label">Lessons</span>
@@ -1450,18 +1443,18 @@
                         </p>
                         <ul class="feature-list">
                             <li>Qur'an, Qāʿidah & optional Islamic Studies</li>
-                            <li>20-minute or 45-minute sessions</li>
+                            <li>45-minute or 1-hour sessions</li>
                             <li>One-to-one or small group (2 students)</li>
                             <li>Patient, child-friendly teaching approach</li>
                         </ul>
                         <div class="price-block">
                             <div class="price-row">
                                 <span class="price-label">One-to-one (per hour)</span>
-                                <span class="price-val">Enquire</span>
+                                <span class="price-val">£20/45 minutes</span>
                             </div>
                             <div class="price-row">
-                                <span class="price-label">Small group — per student</span>
-                                <span class="price-val">£20/hr (shared)</span>
+                                <span class="price-label">Small group — 2-3 students</span>
+                                <span class="price-val">£20/1 hour (shared)</span>
                             </div>
                         </div>
                     </div>
@@ -1475,19 +1468,19 @@
                             from scratch or refining your Tajwīd.
                         </p>
                         <ul class="feature-list">
-                            <li>One-to-one only — fully private</li>
+                            <li>One-to-one — fully private</li>
                             <li>Personalised recitation & Tajwīd support</li>
                             <li>Flexible pacing to suit your goals</li>
-                            <li>Beginners warmly welcomed</li>
+                            <li>Beginners welcomed</li>
                         </ul>
                         <div class="price-block">
                             <div class="price-row">
-                                <span class="price-label">30-minute session</span>
-                                <span class="price-val">£15</span>
+                                <span class="price-label">One-to-one</span>
+                                <span class="price-val">£15/30 minutes</span>
                             </div>
                             <div class="price-row">
-                                <span class="price-label">60-minute session</span>
-                                <span class="price-val">£25</span>
+                                <span class="price-label">One-to-one</span>
+                                <span class="price-val">£20/45 minutes</span>
                             </div>
                         </div>
                     </div>
@@ -1496,7 +1489,6 @@
         </section>
 
         <section id="location">
-            <div class="section-pattern"></div>
             <div class="max-w">
                 <div class="section-header fade-in">
                     <span class="section-label">Location & Availability</span>
@@ -1509,9 +1501,9 @@
                     <div class="loc-card">
                         <span class="loc-icon">📍</span>
                         <span class="loc-badge green">In-Person</span>
-                        <h4>Local — within 4 miles of B9</h4>
+                        <h4>Local — within 3 miles of B9</h4>
                         <p>
-                            Home visits available within a 4-mile radius of the B9 postcode in Birmingham. A familiar,
+                            Home visits available within a 3-mile radius of the B9 postcode in Birmingham. A familiar,
                             comfortable setting for younger learners.
                         </p>
                     </div>
@@ -1538,7 +1530,6 @@
         </section>
 
         <section id="trust">
-            <div class="section-pattern"></div>
             <div class="max-w">
                 <div class="section-header fade-in">
                     <span class="section-label">Experience & Trust</span>
@@ -1551,13 +1542,16 @@
                 <div class="trust-grid fade-in">
                     <div class="trust-badge">
                         <span class="tb-icon">🛡️</span>
-                        <h4>DBS Checked</h4>
-                        <p>Fully vetted and DBS checked — documentation available upon request.</p>
+                        <h4>DBS Certified</h4>
+                        <p>Fully vetted and DBS certified</p>
                     </div>
                     <div class="trust-badge">
                         <span class="tb-icon">👶</span>
-                        <h4>Child-Specialist Teaching</h4>
-                        <p>Experienced teaching children of varying ages and abilities with patience and positivity.</p>
+                        <h4>Child-Focused Teaching</h4>
+                        <p>
+                            Hands-on experience working with children of different ages and abilities, using a patient
+                            and positive approach.
+                        </p>
                     </div>
                     <div class="trust-badge">
                         <span class="tb-icon">⭐</span>
@@ -1570,14 +1564,13 @@
                     <div class="trust-badge">
                         <span class="tb-icon">🎓</span>
                         <h4>Qualified & Knowledgeable</h4>
-                        <p>Strong grounding in Qur'anic sciences, Tajwīd rules, and Qāʿidah methodology.</p>
+                        <p>Strong grounding in Qur'anic knowledge, Tajwīd rules, and Qāʿidah methodology.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="progress">
-            <div class="section-pattern"></div>
             <div class="max-w">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start">
                     <div class="fade-in">
@@ -1656,27 +1649,55 @@
         </section>
 
         <section id="trial">
-            <div class="section-pattern"></div>
             <div class="max-w">
                 <div class="trial-inner fade-in">
                     <div>
-                        <span class="section-label">Getting Started</span>
-                        <h3>Begin with a free 20-minute trial</h3>
+                        <span class="section-label">Book Your Trial</span>
+                        <h3>Confirm your free 15-minute trial lesson</h3>
                         <p>
-                            Not sure if it's the right fit? A no-obligation trial lesson lets you and your child
-                            experience the teaching style before committing to regular sessions.
+                            Ready to get started? Complete payment below to secure your trial slot. You'll be contacted
+                            within 24 hours to confirm your preferred time.
                         </p>
                         <div class="payment-icons">
                             <span class="pay-icon">Bank Transfer</span>
-                            <span class="pay-icon">Cash</span>
                             <span class="pay-icon">PayPal</span>
-                            <span class="pay-icon">Monzo</span>
+                            <span class="pay-icon">Stripe</span>
                         </div>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; line-height: 1.6">
+                            Not ready to pay yet?
+                            <a href="#enquiries" style="color: var(--green-600); font-weight: 600"
+                                >Send an enquiry instead</a
+                            >
+                        </p>
                     </div>
-                    <div style="text-align: center; flex-shrink: 0">
-                        <a href="#cta" class="btn-primary" style="white-space: nowrap">Book Your Trial</a>
-                        <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 0.7rem">
-                            No commitment required
+                    <div
+                        style="
+                            text-align: center;
+                            flex-shrink: 0;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.75rem;
+                            align-items: center;
+                        "
+                    >
+                        <a
+                            href="https://buy.stripe.com/YOUR_LINK"
+                            class="btn-primary"
+                            style="white-space: nowrap"
+                            target="_blank"
+                            rel="noopener"
+                            >Pay &amp; Book Trial →</a
+                        >
+                        <a
+                            href="https://paypal.me/YOURHANDLE"
+                            class="btn-outline"
+                            style="white-space: nowrap; font-size: 0.85rem; padding: 0.65rem 1.4rem"
+                            target="_blank"
+                            rel="noopener"
+                            >Pay via PayPal</a
+                        >
+                        <p style="font-size: 0.72rem; color: var(--text-light)">
+                            Secure payment · No commitment after trial
                         </p>
                     </div>
                 </div>
@@ -1684,7 +1705,6 @@
         </section>
 
         <section id="policies">
-            <div class="section-pattern"></div>
             <div class="max-w">
                 <div class="section-header fade-in">
                     <span class="section-label">Policies</span>
@@ -1697,8 +1717,9 @@
                     <div class="policy-card">
                         <h4>❌ Cancellations</h4>
                         <p>
-                            Please provide as much notice as possible when cancelling a lesson. Late cancellations may
-                            be charged.
+                            Please provide a 12 hour notice for cancellations. Cancellations with less than 12 hours'
+                            notice may be charged in full, except in cases of illness or emergency. We understand that
+                            things come up and will always try to be flexible where possible.
                         </p>
                     </div>
                     <div class="policy-card">
@@ -1711,8 +1732,8 @@
                     <div class="policy-card">
                         <h4>💳 Payments</h4>
                         <p>
-                            Payment is typically requested weekly or monthly in advance. Bank transfer, cash, PayPal,
-                            and Monzo are all accepted.
+                            Payment is typically requested weekly or monthly in advance. Bank transfer and PayPal are
+                            accepted.
                         </p>
                     </div>
                     <div class="policy-card">
@@ -1732,7 +1753,6 @@
         </section>
 
         <section id="faq">
-            <div class="section-pattern"></div>
             <div class="max-w">
                 <div class="section-header fade-in">
                     <span class="section-label">FAQ</span>
@@ -1808,17 +1828,16 @@
             </div>
         </section>
 
-        <section id="cta">
-            <div class="section-pattern"></div>
+        <section id="enquiries">
             <div class="fade-in">
-                <span class="section-label">Begin Today</span>
-                <h2>Start your Qur'anic journey<br />with confidence</h2>
+                <span class="section-label">Enquiries</span>
+                <h2>Have a question? Get in touch</h2>
                 <p>
-                    Book a free 20-minute trial lesson — no commitment, just an opportunity to experience a lesson and
-                    see if it's the right fit.
+                    Whether you'd like to know more about lessons, pricing, or availability — fill in the form below and
+                    we'll get back to you shortly.
                 </p>
                 <div class="cta-btns">
-                    <a href="#cta-form" class="btn-gold">Book a Trial Lesson</a>
+                    <a href="#trial" class="btn-gold">Book a Trial Lesson →</a>
                     <a href="https://wa.me/447700000000" class="btn-ghost">Message on WhatsApp</a>
                 </div>
 
@@ -1890,7 +1909,7 @@
                     <a href="#trust">About & Trust</a>
                     <a href="#policies">Policies</a>
                     <a href="#faq">FAQ</a>
-                    <a href="#cta">Contact</a>
+                    <a href="#enquiries">Contact</a>
                 </div>
             </div>
             <div class="footer-bottom">
