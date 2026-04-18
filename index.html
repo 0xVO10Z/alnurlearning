@@ -52,7 +52,7 @@
                 --brand-deep: var(--green-800);
                 --on-brand: #ffffff;
                 --on-accent: #ffffff;
-
+                --pattern-opacity: 0.045;
                 --footer-bottom-text: #666666;
                 --blob-1: rgba(45, 110, 69, 0.16);
                 --blob-2: rgba(212, 168, 75, 0.18);
@@ -92,7 +92,7 @@
                 --brand-deep: #07110b;
                 --on-brand: rgba(255, 255, 255, 0.96);
                 --on-accent: #ffffff;
-
+                --pattern-opacity: 0.028;
                 --footer-bottom-text: rgba(207, 214, 209, 0.72);
                 --blob-1: rgba(57, 160, 107, 0.22);
                 --blob-2: rgba(227, 192, 108, 0.18);
@@ -1352,6 +1352,86 @@
                 position: relative;
                 z-index: 1;
             }
+
+            #hero::after,
+            #lessons::after,
+            #location::after,
+            #trust::after,
+            #progress::after,
+            #trial::after,
+            #policies::after,
+            #faq::after,
+            #enquiries::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                pointer-events: none;
+                z-index: 0;
+                opacity: var(--pattern-opacity);
+                background-size: 70px 70px;
+            }
+            @keyframes slow-drift {
+                from {
+                    background-position: 0 0;
+                }
+                to {
+                    background-position: 70px 70px;
+                }
+            }
+
+            #hero::after {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Cg fill='none' stroke='%232d6e45' stroke-width='1'%3E%3Cpolygon points='35,5 62,20 62,50 35,65 8,50 8,20'/%3E%3C/g%3E%3C/svg%3E");
+                animation: slow-drift 30s linear infinite;
+            }
+            #lessons::after,
+            #location::after,
+            #trust::after,
+            #progress::after,
+            #trial::after,
+            #policies::after,
+            #faq::after,
+            #enquiries::after {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Cg fill='none' stroke='%232d6e45' stroke-width='1'%3E%3Cpolygon points='35,5 62,20 62,50 35,65 8,50 8,20'/%3E%3C/g%3E%3C/svg%3E");
+            }
+            #trust::after,
+            #enquiries::after {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Cg fill='none' stroke='%23d4a84b' stroke-width='1'%3E%3Cpolygon points='35,5 62,20 62,50 35,65 8,50 8,20'/%3E%3C/g%3E%3C/svg%3E");
+            }
+
+            .loc-card,
+            .trust-badge,
+            .policy-card {
+                position: relative;
+                overflow: hidden;
+                transition:
+                    transform 0.25s,
+                    box-shadow 0.25s,
+                    border-color 0.25s;
+            }
+            .loc-card::after,
+            .trust-badge::after,
+            .policy-card::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(600px 220px at 25% 0%, rgba(212, 168, 75, 0.18), transparent 55%),
+                    radial-gradient(520px 240px at 80% 110%, rgba(45, 110, 69, 0.14), transparent 58%);
+                opacity: 0;
+                transition: opacity 0.25s;
+                pointer-events: none;
+            }
+            .loc-card:hover,
+            .trust-badge:hover,
+            .policy-card:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-lg);
+                border-color: rgba(212, 168, 75, 0.45);
+            }
+            .loc-card:hover::after,
+            .trust-badge:hover::after,
+            .policy-card:hover::after {
+                opacity: 1;
+            }
         </style>
     </head>
     <body>
@@ -2046,9 +2126,7 @@
                         try {
                             const data = await res.json();
                             if (data?.errors?.length) msg = data.errors.map((x) => x.message).join(" ");
-                        } catch {
-                            // ignore
-                        }
+                        } catch {}
                         setFormStatus(msg, "error");
                     }
                 } catch {
