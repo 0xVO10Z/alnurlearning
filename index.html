@@ -1432,6 +1432,62 @@
             .policy-card:hover::after {
                 opacity: 1;
             }
+
+            #hero {
+                justify-content: space-between;
+                gap: 3rem;
+            }
+            .hero-image-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                gap: 0.75rem;
+                width: min(560px, 45%);
+                flex-shrink: 0;
+                border-radius: var(--radius);
+                overflow: hidden;
+                position: relative;
+                z-index: 1;
+                aspect-ratio: 4/3.5;
+            }
+            .hero-img-cell {
+                border-radius: var(--radius-sm);
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: "Inter", sans-serif;
+                font-size: 0.7rem;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.75);
+            }
+            .hero-img-cell:nth-child(1) {
+                background: #2d6e45;
+            }
+            .hero-img-cell:nth-child(2) {
+                background: #1a4229;
+            }
+            .hero-img-cell:nth-child(3) {
+                background: #3d7a57;
+            }
+            .hero-img-cell:nth-child(4) {
+                background: #b8922e;
+            }
+
+            @media (max-width: 768px) {
+                #hero {
+                    flex-direction: column;
+                    padding-bottom: 2.5rem;
+                }
+                .hero-image-grid {
+                    width: 100%;
+                    aspect-ratio: 16/9;
+                    order: -1;
+                    margin-top: 0;
+                }
+            }
         </style>
     </head>
     <body>
@@ -1488,6 +1544,12 @@
                         <span class="stat-label">Checked</span>
                     </div>
                 </div>
+            </div>
+            <div class="hero-image-grid fade-in">
+                <div class="hero-img-cell">Image 1</div>
+                <div class="hero-img-cell">Image 2</div>
+                <div class="hero-img-cell">Image 3</div>
+                <div class="hero-img-cell">Image 4</div>
             </div>
         </section>
 
