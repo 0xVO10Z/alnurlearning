@@ -1437,56 +1437,195 @@
                 justify-content: space-between;
                 gap: 3rem;
             }
-            .hero-image-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 1fr 1fr;
-                gap: 0.75rem;
-                width: min(560px, 45%);
+
+            /* ── Testimonial Slideshow ── */
+            .hero-testimonial-slider {
+                width: clamp(320px, 44%, 680px);
                 flex-shrink: 0;
-                border-radius: var(--radius);
-                overflow: hidden;
+                flex-grow: 1;
                 position: relative;
                 z-index: 1;
-                aspect-ratio: 4/3.5;
+                display: flex;
+                flex-direction: column;
+                gap: 1.25rem;
             }
-            .hero-img-cell {
-                border-radius: var(--radius-sm);
+            .ts-header {
+                text-align: center;
+            }
+            .ts-label {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                background: var(--green-100);
+                color: var(--green-800);
+                border: 1px solid var(--green-200);
+                padding: 0.3rem 0.85rem;
+                border-radius: 50px;
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.07em;
+                text-transform: uppercase;
+                margin-bottom: 0.6rem;
+            }
+            .ts-label .ts-star { color: var(--gold-400); }
+            .ts-title {
+                font-family: "Playfair Display", serif;
+                font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+                color: var(--green-800);
+                font-weight: 600;
+                line-height: 1.25;
+                margin-bottom: 0.25rem;
+            }
+            .ts-title em { color: var(--gold-400); font-style: italic; }
+            .ts-sub {
+                font-size: 0.82rem;
+                color: var(--text-muted);
+                line-height: 1.5;
+            }
+
+            .ts-track-wrap {
                 overflow: hidden;
+                border-radius: var(--radius);
+                background: var(--surface);
+                border: 1px solid var(--beige-200);
+                box-shadow: var(--shadow-lg);
+                position: relative;
+            }
+            [data-theme="dark"] .ts-track-wrap {
+                border-color: var(--beige-200);
+                background: var(--green-100);
+            }
+            .ts-track {
+                display: flex;
+                transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+                will-change: transform;
+            }
+            .ts-slide {
+                min-width: 100%;
+                padding: clamp(1.5rem, 3vw, 2.8rem) clamp(1.5rem, 3.5vw, 3rem) clamp(1.2rem, 2.5vw, 2.4rem);
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                box-sizing: border-box;
+            }
+            .ts-quote-mark {
+                font-size: clamp(2rem, 3.5vw, 3.4rem);
+                line-height: 1;
+                color: var(--gold-400);
+                font-family: Georgia, serif;
+                font-weight: 700;
+                opacity: 0.8;
+                margin-bottom: -0.4rem;
+            }
+            .ts-body {
+                font-family: "Playfair Display", serif;
+                font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+                font-style: italic;
+                color: var(--text-dark);
+                line-height: 1.7;
+            }
+            .ts-divider {
+                width: 2.5rem;
+                height: 2px;
+                background: var(--gold-400);
+                border-radius: 2px;
+                flex-shrink: 0;
+            }
+            .ts-author {
+                display: flex;
+                align-items: center;
+                gap: 0.85rem;
+            }
+            .ts-avatar {
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                background: var(--green-600);
+                color: #fff;
+                font-size: 0.78rem;
+                font-weight: 700;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-family: "Inter", sans-serif;
-                font-size: 0.7rem;
+                flex-shrink: 0;
+                letter-spacing: 0.02em;
+            }
+            .ts-avatar.gold { background: var(--gold-400); }
+            .ts-avatar.deep { background: var(--green-800); }
+            .ts-avatar.mid  { background: var(--green-300); }
+            .ts-meta { display: flex; flex-direction: column; gap: 0.18rem; }
+            .ts-name {
                 font-weight: 600;
-                letter-spacing: 0.05em;
-                text-transform: uppercase;
-                color: rgba(255, 255, 255, 0.75);
+                font-size: 0.9rem;
+                color: var(--text-dark);
             }
-            .hero-img-cell:nth-child(1) {
-                background: #2d6e45;
+            .ts-detail {
+                font-size: 0.78rem;
+                color: var(--text-muted);
             }
-            .hero-img-cell:nth-child(2) {
-                background: #1a4229;
+            .ts-stars { color: var(--gold-400); font-size: 0.82rem; letter-spacing: 0.05em; }
+
+            .ts-controls {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.75rem;
             }
-            .hero-img-cell:nth-child(3) {
-                background: #3d7a57;
+            .ts-btn {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                border: 2px solid var(--green-300);
+                background: transparent;
+                color: var(--text-mid);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.85rem;
+                transition: all 0.2s;
+                flex-shrink: 0;
             }
-            .hero-img-cell:nth-child(4) {
-                background: #b8922e;
+            .ts-btn:hover {
+                border-color: var(--gold-400);
+                background: var(--gold-100);
+                color: var(--gold-600);
+                transform: translateY(-1px);
             }
+            [data-theme="dark"] .ts-btn:hover { background: rgba(227,192,108,0.14); }
+            .ts-dots {
+                display: flex;
+                gap: 0.45rem;
+                align-items: center;
+            }
+            .ts-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--beige-200);
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                transition: all 0.25s;
+            }
+            .ts-dot.active {
+                background: var(--gold-400);
+                width: 22px;
+                border-radius: 4px;
+            }
+            [data-theme="dark"] .ts-dot { background: var(--beige-200); }
 
             @media (max-width: 768px) {
                 #hero {
                     flex-direction: column;
                     padding-bottom: 2.5rem;
                 }
-                .hero-image-grid {
+                .hero-testimonial-slider {
                     width: 100%;
-                    aspect-ratio: 16/9;
                     order: -1;
                     margin-top: 0;
                 }
+                .ts-title { font-size: 1.2rem; }
             }
         </style>
     </head>
@@ -1545,11 +1684,90 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-image-grid fade-in">
-                <div class="hero-img-cell">Image 1</div>
-                <div class="hero-img-cell">Image 2</div>
-                <div class="hero-img-cell">Image 3</div>
-                <div class="hero-img-cell">Image 4</div>
+            <div class="hero-testimonial-slider fade-in">
+                <div class="ts-label" style="display:inline-flex;align-self:center;"><span class="ts-star">★</span> Testimonials</div>
+
+                <div class="ts-track-wrap">
+                    <div class="ts-track" id="tsTrack">
+
+                        <div class="ts-slide">
+                            <div class="ts-quote-mark">"</div>
+                            <p class="ts-body">Our daughter has made incredible progress. The teacher is so patient and makes every lesson engaging and enjoyable for her.</p>
+                            <div class="ts-divider"></div>
+                            <div class="ts-author">
+                                <div class="ts-avatar">FA</div>
+                                <div class="ts-meta">
+                                    <span class="ts-name">Fatima A.</span>
+                                    <span class="ts-detail">Parent · Birmingham</span>
+                                    <span class="ts-stars">★★★★★</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ts-slide">
+                            <div class="ts-quote-mark">"</div>
+                            <p class="ts-body">I started as a complete beginner and felt comfortable from day one. The flexible timings work perfectly around my schedule.</p>
+                            <div class="ts-divider"></div>
+                            <div class="ts-author">
+                                <div class="ts-avatar gold">ZK</div>
+                                <div class="ts-meta">
+                                    <span class="ts-name">Zara K.</span>
+                                    <span class="ts-detail">Adult student · Online</span>
+                                    <span class="ts-stars">★★★★★</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ts-slide">
+                            <div class="ts-quote-mark">"</div>
+                            <p class="ts-body">Both my boys attend weekly. Their Qur'an has improved hugely and they actually look forward to the lessons — that says it all.</p>
+                            <div class="ts-divider"></div>
+                            <div class="ts-author">
+                                <div class="ts-avatar deep">YM</div>
+                                <div class="ts-meta">
+                                    <span class="ts-name">Yusuf M.</span>
+                                    <span class="ts-detail">Parent · Birmingham B9</span>
+                                    <span class="ts-stars">★★★★★</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ts-slide">
+                            <div class="ts-quote-mark">"</div>
+                            <p class="ts-body">Very knowledgeable and kind. My Tajwīd has improved dramatically in just a few months. Highly recommend to anyone looking to refine their recitation.</p>
+                            <div class="ts-divider"></div>
+                            <div class="ts-author">
+                                <div class="ts-avatar mid">RA</div>
+                                <div class="ts-meta">
+                                    <span class="ts-name">Ruqayyah A.</span>
+                                    <span class="ts-detail">Adult student · Online</span>
+                                    <span class="ts-stars">★★★★★</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ts-slide">
+                            <div class="ts-quote-mark">"</div>
+                            <p class="ts-body">The DBS check gave us real peace of mind. Our son loves his sessions and has memorised more surahs than we ever expected at his age.</p>
+                            <div class="ts-divider"></div>
+                            <div class="ts-author">
+                                <div class="ts-avatar">HB</div>
+                                <div class="ts-meta">
+                                    <span class="ts-name">Hamza B.</span>
+                                    <span class="ts-detail">Parent · Birmingham</span>
+                                    <span class="ts-stars">★★★★★</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="ts-controls">
+                    <button class="ts-btn" id="tsPrev" aria-label="Previous review">←</button>
+                    <div class="ts-dots" id="tsDots"></div>
+                    <button class="ts-btn" id="tsNext" aria-label="Next review">→</button>
+                </div>
             </div>
         </section>
 
@@ -2175,6 +2393,57 @@
             }
 
             if (form) form.addEventListener("submit", submitToFormspree);
+
+            // ── Testimonial Slider ──
+            (function () {
+                const track = document.getElementById("tsTrack");
+                const dotsContainer = document.getElementById("tsDots");
+                const prevBtn = document.getElementById("tsPrev");
+                const nextBtn = document.getElementById("tsNext");
+                if (!track) return;
+
+                const slides = track.querySelectorAll(".ts-slide");
+                const total = slides.length;
+                let current = 0;
+                let autoTimer;
+
+                // Build dots
+                slides.forEach((_, i) => {
+                    const dot = document.createElement("button");
+                    dot.className = "ts-dot" + (i === 0 ? " active" : "");
+                    dot.setAttribute("aria-label", "Go to review " + (i + 1));
+                    dot.addEventListener("click", () => goTo(i));
+                    dotsContainer.appendChild(dot);
+                });
+
+                function goTo(idx) {
+                    current = (idx + total) % total;
+                    track.style.transform = "translateX(-" + current * 100 + "%)";
+                    dotsContainer.querySelectorAll(".ts-dot").forEach((d, i) => {
+                        d.classList.toggle("active", i === current);
+                    });
+                }
+
+                function startAuto() {
+                    autoTimer = setInterval(() => goTo(current + 1), 5000);
+                }
+                function stopAuto() { clearInterval(autoTimer); }
+
+                prevBtn.addEventListener("click", () => { stopAuto(); goTo(current - 1); startAuto(); });
+                nextBtn.addEventListener("click", () => { stopAuto(); goTo(current + 1); startAuto(); });
+
+                // Swipe support
+                let touchX = null;
+                track.parentElement.addEventListener("touchstart", e => { touchX = e.touches[0].clientX; }, { passive: true });
+                track.parentElement.addEventListener("touchend", e => {
+                    if (touchX === null) return;
+                    const diff = touchX - e.changedTouches[0].clientX;
+                    if (Math.abs(diff) > 40) { stopAuto(); goTo(current + (diff > 0 ? 1 : -1)); startAuto(); }
+                    touchX = null;
+                }, { passive: true });
+
+                startAuto();
+            })();
         </script>
     </body>
 </html>
