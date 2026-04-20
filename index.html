@@ -1357,6 +1357,7 @@
             #lessons::after,
             #location::after,
             #trust::after,
+            #about::after,
             #progress::after,
             #trial::after,
             #policies::after,
@@ -1386,6 +1387,7 @@
             #lessons::after,
             #location::after,
             #trust::after,
+            #about::after,
             #progress::after,
             #trial::after,
             #policies::after,
@@ -1394,6 +1396,7 @@
                 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Cg fill='none' stroke='%232d6e45' stroke-width='1'%3E%3Cpolygon points='35,5 62,20 62,50 35,65 8,50 8,20'/%3E%3C/g%3E%3C/svg%3E");
             }
             #trust::after,
+            #about::after,
             #enquiries::after {
                 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Cg fill='none' stroke='%23d4a84b' stroke-width='1'%3E%3Cpolygon points='35,5 62,20 62,50 35,65 8,50 8,20'/%3E%3C/g%3E%3C/svg%3E");
             }
@@ -1438,7 +1441,6 @@
                 gap: 3rem;
             }
 
-            /* ── Testimonial Slideshow ── */
             .hero-testimonial-slider {
                 width: clamp(320px, 44%, 680px);
                 flex-shrink: 0;
@@ -1627,6 +1629,127 @@
                 }
                 .ts-title { font-size: 1.2rem; }
             }
+
+            #about {
+                background: linear-gradient(160deg, var(--green-50) 0%, var(--beige-50) 60%, var(--gold-100) 100%);
+            }
+            .about-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: center;
+            }
+            @media (max-width: 860px) {
+                .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            }
+            .about-portrait {
+                position: relative;
+                display: flex;
+                justify-content: center;
+            }
+            .about-portrait-inner {
+                width: 280px;
+                height: 280px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--green-100), var(--gold-100));
+                border: 4px solid var(--gold-300);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 6rem;
+                box-shadow: var(--shadow-lg);
+                position: relative;
+                z-index: 1;
+            }
+            .about-portrait-ring {
+                position: absolute;
+                inset: -18px;
+                border-radius: 50%;
+                border: 2px dashed rgba(212, 168, 75, 0.4);
+                animation: spin-slow 18s linear infinite;
+            }
+            @keyframes spin-slow { to { transform: rotate(360deg); } }
+            .about-portrait-badge {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                background: var(--green-600);
+                color: #fff;
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                padding: 0.35rem 0.75rem;
+                border-radius: 50px;
+                border: 2px solid var(--gold-300);
+                box-shadow: var(--shadow-sm);
+                z-index: 2;
+            }
+            .about-text .section-header { margin-bottom: 1.75rem; }
+            .about-text p {
+                font-size: 1.05rem;
+                color: var(--text-mid);
+                line-height: 1.8;
+                margin-bottom: 1.1rem;
+            }
+            .about-values {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                margin-top: 1.75rem;
+            }
+            .about-value-item {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.85rem;
+                background: var(--surface);
+                border: 1px solid var(--beige-200);
+                border-radius: var(--radius-sm);
+                padding: 0.85rem 1.1rem;
+                box-shadow: var(--shadow-sm);
+                position: relative;
+                overflow: hidden;
+                transition:
+                    transform 0.25s,
+                    box-shadow 0.25s,
+                    border-color 0.25s;
+            }
+            .about-value-item::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(600px 220px at 25% 0%, rgba(212, 168, 75, 0.18), transparent 55%),
+                    radial-gradient(520px 240px at 80% 110%, rgba(45, 110, 69, 0.14), transparent 58%);
+                opacity: 0;
+                transition: opacity 0.25s;
+                pointer-events: none;
+            }
+            .about-value-item:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-lg);
+                border-color: rgba(212, 168, 75, 0.45);
+            }
+            .about-value-item:hover::after {
+                opacity: 1;
+            }
+            .about-value-icon {
+                font-size: 1.35rem;
+                flex-shrink: 0;
+                line-height: 1;
+                margin-top: 0.1rem;
+            }
+            .about-value-item h5 {
+                font-size: 0.92rem;
+                font-weight: 600;
+                color: var(--green-800);
+                margin-bottom: 0.2rem;
+            }
+            .about-value-item p {
+                font-size: 0.88rem;
+                color: var(--text-muted);
+                margin-bottom: 0;
+                line-height: 1.55;
+            }
         </style>
     </head>
     <body>
@@ -1635,9 +1758,8 @@
             <div class="nav-links">
                 <a href="#lessons">Lessons</a>
                 <a href="#location">Location</a>
-                <a href="#trust">About</a>
+                <a href="#about">About</a>
                 <a href="#faq">FAQ</a>
-                <a href="#policies">Policies</a>
                 <a href="#enquiries" class="nav-enquiries">Enquiries</a>
                 <a href="#trial" class="nav-cta">Book Trial</a>
                 <button class="theme-toggle" type="button" id="themeToggle" aria-label="Toggle theme">
@@ -1652,10 +1774,9 @@
         <div class="mobile-menu" id="mobileMenu">
             <a href="#lessons" onclick="closeMenu()">Lessons</a>
             <a href="#location" onclick="closeMenu()">Location</a>
-            <a href="#trust" onclick="closeMenu()">About</a>
+            <a href="#about" onclick="closeMenu()">About</a>
             <a href="#progress" onclick="closeMenu()">Progress</a>
             <a href="#faq" onclick="closeMenu()">FAQ</a>
-            <a href="#policies" onclick="closeMenu()">Policies</a>
             <a href="#enquiries" onclick="closeMenu()">Enquiries</a>
             <a href="#trial" onclick="closeMenu()">Book Trial</a>
             <button class="theme-toggle" type="button" id="themeToggleMobile" aria-label="Toggle theme">
@@ -1919,6 +2040,58 @@
                         <span class="tb-icon">🎓</span>
                         <h4>Qualified & Knowledgeable</h4>
                         <p>Strong grounding in Qur'anic knowledge, Tajwīd rules, and Qāʿidah methodology.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="max-w">
+                <div class="about-grid">
+                    <div class="about-portrait fade-in">
+                        <div class="about-portrait-ring"></div>
+                        <div class="about-portrait-inner">🌿</div>
+                        <span class="about-portrait-badge">DBS Certified</span>
+                    </div>
+                    <div class="about-text fade-in">
+                        <div class="section-header">
+                            <span class="section-label">About Us</span>
+                            <h2 class="section-title">Rooted in faith,<br />committed to your growth</h2>
+                        </div>
+                        <p>
+                            Al-Nūr Learning was founded with a single purpose: to make high-quality Qur'anic education
+                            accessible, personal, and nurturing for every student — from young beginners taking their
+                            first steps with the Qāʿidah, to adults seeking to refine their Tajwīd.
+                        </p>
+                        <p>
+                            Based in Birmingham, our tutor brings years of hands-on experience teaching children and
+                            adults across a range of backgrounds and abilities. Every lesson is planned with care,
+                            delivered with patience, and adapted to the individual learner — because no two students
+                            are the same.
+                        </p>
+                        <div class="about-values">
+                            <div class="about-value-item">
+                                <span class="about-value-icon">🌱</span>
+                                <div>
+                                    <h5>Student-first approach</h5>
+                                    <p>Lessons move at your pace, building genuine confidence and love for recitation.</p>
+                                </div>
+                            </div>
+                            <div class="about-value-item">
+                                <span class="about-value-icon">🤝</span>
+                                <div>
+                                    <h5>Open to all backgrounds</h5>
+                                    <p>Whether you're a complete beginner or returning to practice, you are welcome here.</p>
+                                </div>
+                            </div>
+                            <div class="about-value-item">
+                                <span class="about-value-icon">📡</span>
+                                <div>
+                                    <h5>Always in communication</h5>
+                                    <p>Parents receive regular WhatsApp updates so your child's progress is always visible.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2396,7 +2569,6 @@
 
             if (form) form.addEventListener("submit", submitToFormspree);
 
-            // ── Testimonial Slider ──
             (function () {
                 const track = document.getElementById("tsTrack");
                 const dotsContainer = document.getElementById("tsDots");
@@ -2409,7 +2581,6 @@
                 let current = 0;
                 let autoTimer;
 
-                // Build dots
                 slides.forEach((_, i) => {
                     const dot = document.createElement("button");
                     dot.className = "ts-dot" + (i === 0 ? " active" : "");
@@ -2434,7 +2605,6 @@
                 prevBtn.addEventListener("click", () => { stopAuto(); goTo(current - 1); startAuto(); });
                 nextBtn.addEventListener("click", () => { stopAuto(); goTo(current + 1); startAuto(); });
 
-                // Swipe support
                 let touchX = null;
                 track.parentElement.addEventListener("touchstart", e => { touchX = e.touches[0].clientX; }, { passive: true });
                 track.parentElement.addEventListener("touchend", e => {
