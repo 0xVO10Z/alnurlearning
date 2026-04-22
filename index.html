@@ -1784,6 +1784,109 @@
                 margin-bottom: 0;
                 line-height: 1.55;
             }
+
+            .lessons-intro {
+                color: var(--green-800);
+            }
+
+            .lesson-card p {
+                color: var(--text-muted);
+            }
+
+            .feature-list li {
+                color: var(--text-mid);
+            }
+
+            .price-label {
+                color: var(--text-mid);
+            }
+
+            .trust-badge {
+                background: rgba(255, 255, 255, 0.07);
+            }
+            [data-theme="dark"] .trust-badge {
+                background: rgba(255, 255, 255, 0.05);
+            }
+
+            .contact-form select option {
+                background: #1a4229;
+                color: #ffffff;
+            }
+
+            .about-value-item p {
+                color: var(--text-muted);
+            }
+
+            .step-content p {
+                color: var(--text-muted);
+            }
+            .step-content h4 {
+                color: var(--green-800);
+            }
+
+            .policy-card h4 {
+                color: var(--green-800);
+            }
+
+            .faq-q:hover {
+                color: var(--green-600);
+            }
+
+            .mobile-menu a:hover {
+                color: var(--green-600);
+            }
+
+            .hero-sub {
+                color: var(--text-mid);
+            }
+
+            .stat-label {
+                color: var(--text-muted);
+            }
+
+            .section-sub {
+                color: var(--text-muted);
+            }
+
+            .loc-card p {
+                color: var(--text-muted);
+            }
+
+            .footer-bottom {
+                color: var(--footer-bottom-text);
+            }
+
+            #packages .trust-badge h4 {
+                color: var(--green-800);
+            }
+
+            #packages .trust-badge p {
+                color: var(--text-muted);
+            }
+
+            #packages .trust-badge {
+                color: var(--text-dark);
+            }
+
+            #packages .custom-plan-card h4,
+            #packages .custom-plan-card p {
+                color: var(--green-800);
+            }
+
+            #packages .trust-badge {
+                background: var(--surface);
+                border: 1px solid var(--beige-200);
+            }
+
+            #packages .trust-badge.featured {
+                border-color: var(--gold-300);
+                box-shadow: var(--shadow-md);
+            }
+
+            #packages .custom-plan-card {
+                background: var(--gold-100);
+                border-color: var(--gold-300);
+            }
         </style>
     </head>
     <body>
@@ -2022,7 +2125,7 @@
                     </p>
                 </div>
                 <div class="trust-grid fade-in">
-                    <div class="trust-badge" style="text-align: center">
+                    <div class="trust-badge featured" style="text-align: center">
                         <span class="tb-icon">🌿</span>
                         <h4>Level 1 Plan</h4>
                         <p>1 lesson per week</p>
@@ -2038,10 +2141,7 @@
                             £80<span style="font-size: 0.9rem; font-weight: 400; color: var(--text-muted)">/month</span>
                         </p>
                     </div>
-                    <div
-                        class="trust-badge"
-                        style="text-align: center; border-color: var(--gold-300); box-shadow: var(--shadow-md)"
-                    >
+                    <div class="trust-badge featured" style="text-align: center">
                         <span class="tb-icon">⭐</span>
                         <h4>Level 2 Plan</h4>
                         <p>2 lessons per week</p>
@@ -2059,7 +2159,7 @@
                             >
                         </p>
                     </div>
-                    <div class="trust-badge" style="text-align: center">
+                    <div class="trust-badge featured" style="text-align: center">
                         <span class="tb-icon">🎓</span>
                         <h4>Level 3 Plan</h4>
                         <p>3 lessons per week</p>
@@ -2077,10 +2177,7 @@
                             >
                         </p>
                     </div>
-                    <div
-                        class="trust-badge"
-                        style="text-align: center; background: var(--gold-100); border-color: var(--gold-300)"
-                    >
+                    <div class="trust-badge custom-plan-card" style="text-align: center">
                         <span class="tb-icon">✏️</span>
                         <h4>Custom Plan</h4>
                         <p>
